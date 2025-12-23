@@ -1,8 +1,10 @@
-from motor.motor_asyncio import AsyncIOMotorClient
-from app.config import settings
+from pymongo import MongoClient
 
-client = AsyncIOMotorClient(settings.MONGODB_URI)
-database = client[settings.DATABASE_NAME]
+MONGO_URI = "mongodb://localhost:27017"
+DB_NAME = "test_db"
 
-users_collection = database["users"]
-audit_logs_collection = database["audit_logs"]
+client = MongoClient(MONGO_URI)
+db = client[DB_NAME]
+
+users_collection = db["users"]
+audit_logs_collection = db["audit_logs"]
